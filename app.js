@@ -1,21 +1,16 @@
-const Products= require ('./products.js');
-
+const Products = require('./products.js');
+const UserRouter = require('./src/domains/Users/Routes')
 const express = require('express');
+const bodyParser = require('body-parser')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
-app.use(express.json());
-app.use(express.urlencode({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.json(Products);
-})
+app.use('/users', UserRouter)
 
-app.post('add', (req, res)=>{
-    console.log(req.body.id);
-    res.send(req.body);
-})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -1,18 +1,12 @@
-const Products = require('./products.js');
-const UserRouter = require('./src/domains/Users/Routes')
 const express = require('express');
-const bodyParser = require('body-parser')
-
 const app = express();
-const port = process.env.PORT || 3001;
+const server = require('./src/server')
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const PORT = process.env.PORT || 3001;
 
-app.use('/users', UserRouter)
+server.config(app)
 
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 })
 

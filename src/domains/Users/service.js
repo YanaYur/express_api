@@ -27,7 +27,7 @@ async function readUserById(id) {
 }
 
 async function findByEmail(email) {
-  return await Users.findOne({ email });
+  return await Users.findOne({ email }).select('+password')
 }
 
 module.exports = {

@@ -13,7 +13,7 @@ async function crypt(data) {
   });
 }
 
-const compare = async (cripted, original) =>
+const compare = async (original, cripted) =>
   new Promise((resolve, reject) => {
     bcrypt.compare(original, cripted, function (err, result) {
       if (err) {

@@ -1,5 +1,7 @@
 const UserRouter = require("../domains/Users/router");
 const AuthRouter = require("../domains/Auth/router");
+const CarsRouter = require("../domains/Cars/router");
+
 const bodyParser = require("body-parser");
 const Database = require("./database");
 const Config = require("./config");
@@ -15,6 +17,7 @@ async function config(app) {
   await Database.start(mongoDb);
 
   // OPENED ACCESS
+  app.use("/cars", CarsRouter);
   app.use("/auth", AuthRouter);
 
   // AUTH

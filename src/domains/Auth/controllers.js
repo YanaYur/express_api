@@ -1,4 +1,4 @@
-const UsersService = require("../Users/Service");
+const UsersService = require("../Users/service");
 const TokenService = require("../../helpers/token.service");
 
 async function signIn(req, res) {
